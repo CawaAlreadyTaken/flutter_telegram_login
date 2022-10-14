@@ -1,8 +1,8 @@
 name: flutter_telegram_login
 description: A new Flutter package project.
 version: 0.0.1
-repository: 
-homepage:
+repository: https://github.com/CawaAlreadyTaken/flutter_telegram_login
+homepage: https://github.com/CawaAlreadyTaken/flutter_telegram_login
 
 environment:
   sdk: '>=2.18.0 <3.0.0'
