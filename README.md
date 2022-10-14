@@ -13,7 +13,7 @@ To use this plugin, add `flutter_telegram_login` as a [dependency in your pubspe
 import 'package:flutter/material.dart';
 import 'package:flutter_telegram_login/flutter_telegram_login.dart';
 
-final TelegramLogin telegramLogin = TelegramLogin("+39 3499117098", "5699352328", "https://loginkazoo.cawa.dev");
+final TelegramLogin telegramLogin = TelegramLogin(<PHONE_NUMBER:String>, <BOT_ID:String>, <BOT_DOMAIN:String>);
 
 void main() => runApp(
   MaterialApp(
