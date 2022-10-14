@@ -1,5 +1,5 @@
 name: flutter_telegram_login
-description: A new Flutter package project.
+description: A Flutter package that implements the required function in order to login with Telegram.
 version: 0.0.1
 repository: https://github.com/CawaAlreadyTaken/flutter_telegram_login
 homepage: https://github.com/CawaAlreadyTaken/flutter_telegram_login
