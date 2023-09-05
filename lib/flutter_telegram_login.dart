@@ -1,6 +1,7 @@
 //library flutter_telegram_login;
 import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
+import 'dart:convert';
 
 class TelegramLogin {
 
@@ -49,21 +50,26 @@ class TelegramLogin {
     }
 
     Future<bool> getData() async {
-        String ans = await _session.get("https://oauth.telegram.org/auth?bot_id=$_botId&origin=$_botDomain&embed=1", {});
-        try {
-            String id = ans.split('"id":')[1].split(',')[0];
-            String firstName = ans.split('"first_name":"')[1].split('",')[0];
-            String username = ans.split('"username":"')[1].split('",')[0];
-            String hash = ans.split('"hash":"')[1].split('"')[0];
-            userData["id"] = id;
-            userData["first_name"] = firstName;
-            userData["username"] = username;
-            userData["hash"] = hash;
-        } catch (e) {
-            return false;
-        }
-        return true;
+    String ans = await _session.post(
+        "https://oauth.telegram.org/auth/get?bot_id=$_botId&origin=$_botDomain&embed=1&request_access=write",
+        {
+          "x-requested-with": "XMLHttpRequest",
+        },
+        "");
+    try {
+      var telegramData = jsonDecode(ans)["user"];
+      userData["id"] = telegramData["id"].toString();
+      userData["first_name"] = telegramData["first_name"].toString();
+      userData["username"] = telegramData["username"].toString();
+      userData["hash"] = telegramData["hash"].toString();
+      userData["photo_url"] = telegramData["photo_url"].toString();
+      userData["auth_date"] = telegramData["auth_date"].toString();
+      print(userData);
+    } catch (e) {
+      return false;
     }
+    return true;
+  }
 }
 
 class Session {
